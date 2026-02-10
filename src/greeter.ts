@@ -1,3 +1,5 @@
+import { UnknownVal } from "./tutorial";
+
 class Student {
   fullName: string;
 
@@ -21,3 +23,5 @@ function greeter(person: Person) {
 
 let user = new Student("Jane", "M.", "User");
 greeter(user);
+
+let UnknownVal: unknown;

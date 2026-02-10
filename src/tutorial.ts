@@ -152,3 +152,85 @@ const myLaptop: Computer = {
 };
 
 console.log(myLaptop.upgradeRam(12));
+
+// Tuples and Enums
+
+let person: [String, number] = ["jhon", 25];
+
+enum serverResponseStatus {
+  sucess = 200,
+  error = 500,
+}
+console.log(serverResponseStatus);
+
+interface ServerResponse {
+  result: serverResponseStatus;
+  data: string[];
+}
+
+function getServerResponse(): ServerResponse {
+  return {
+    result: serverResponseStatus.sucess,
+    data: ["first item", "second item"],
+  };
+}
+
+const response: ServerResponse = getServerResponse();
+console.log();
+
+// type assertion when we know more about the type than type script does
+
+let SomeValue: any = "this is a string";
+
+let strLength: number = (SomeValue as string).length;
+type Bird = {
+  name: string;
+};
+
+let BirdString = '{"name": "Eagle"}';
+let dogString = '{"breed": "poodle"}';
+
+let birdObject = JSON.parse(BirdString);
+
+// the unknown type = it is a counter part to any type it is used to tell typescript we need to check the type first before performing any opration the given variable expression ...
+
+export let UnknownVal: unknown;
+
+UnknownVal = "hello";
+// UnknownVal = 123;
+// UnknownVal = true;
+
+if (typeof UnknownVal === "string") {
+  console.log(UnknownVal.toUpperCase());
+}
+
+function runSomeCode() {
+  const random = Math.random();
+  console.log(random);
+
+  if (random < 0.5) {
+    throw new Error("There was error...");
+  } else {
+    throw "some Error";
+  }
+}
+
+// try and catch block in ts
+
+try {
+  runSomeCode();
+} catch (error) {
+  if (error instanceof Error) {
+    console.log(error.message);
+  } else {
+    console.log(error);
+  }
+}
+
+// the type never
+
+// it is used to represent the type of values that never occur. you can not assign anyvalue to a variable of type never.
+
+// generics in typescript
+
+let array1: Array<string> = ["Apple", "banana", "orange"];
